@@ -1,3 +1,14 @@
+# Write a function: 
+# def solution(S, T) 
+# that, given two strings S and T consisting of N and M characters, respectively, determines whether string T can be obtained from string S by at most one simple operation from the set specified below. The function should return a string: 
+# • "INSERT c" if string T can be obtained from string S by inserting a single character "c";
+# • "REMOVE c" if string T can be obtained from string S by deleting a single character "c";
+# • "MOVE c" if string T can be obtained from different string S by moving a single occurrence of character "c" to the right in the string (that is, deleting it from some position and reinserting it in a later position in the string);
+# • "NOTHING" if no operation is needed (strings T and S are equal);
+# • "IMPOSSIBLE" if none of the above works. 
+# Note that by a character "c" from the operations above, we mean any English alphabet lowercase letter. 
+
+
 def solutions(S, T):
     Sl = len(S)
     Tl = len(T)
