@@ -1,0 +1,106 @@
+def choose_user():
+    user1_input = input('Please choose flag for First user, X or O: ')
+    if user1_input == 'X' or user1_input == 'x':
+        user1 = ['X']
+        user2 = ['O']
+        print('First user flag is ' + str(user1) + '\n'
+                                                   'Second user flag is ' + str(user2) + '\n')
+        i = 0
+        user_input_function(user1, user2, i)
+    elif user1_input == 'O' or user1_input == 'o':
+        user1 = ['O']
+        user2 = ['X']
+        print('First user flag is ' + str(user1) + '\n'
+                                                   'Second user flag is ' + str(user2) + '\n')
+        i = 0
+        user_input_function(user1, user2, i)
+    else:
+        print('Wrong input, please choose X or O, you input was: ' + user1_input)
+        choose_user()
+
+
+def user_input_function(user1, user2, i):
+    user_input_field = 'False'
+    while not user_input_field.isdigit() or int(user_input_field) not in range(1, 10):
+        try:
+            user_input_field = input('Please choose field from 1 to 9: ')
+            if not user_input_field.isdigit():
+                print('Wrong input format,'
+                      ' input should be a digit from 1 to 9, but you have entered: ' + user_input_field)
+            elif int(user_input_field) not in range(1, 10):
+                print('Wrong input, input should be a digit from 1 to 9, but you have entered: ' + user_input_field)
+            else:
+                i = i + 1
+                check_if_empty(user_input_field, user1, user2, i)
+        except:
+            pass
+
+
+def check_if_empty(user_input_field, user1, user2, i):
+    if board[int(user_input_field) - 1] == ['X'] or \
+            board[int(user_input_field) - 1] == ['O']:
+        print('Field already taken!!!\n'
+              'Please re-enter field number')
+        user_input_function(user1, user2, i)
+    else:
+        draw_board(user_input_field, user1, user2, i)
+
+
+def draw_board(user_input_field, user1, user2, i):
+    if i == 1:
+        board[int(user_input_field) - 1] = user1
+        i = -1
+        initial_board(board, user1, user2, i)
+    elif i == 0:
+        board[int(user_input_field) - 1] = user2
+        i = 0
+        initial_board(board, user1, user2, i)
+
+
+def initial_board(board, user1, user2, i):
+    print(board[0], board[1], board[2])
+    print(board[3], board[4], board[5])
+    print(board[6], board[7], board[8])
+    empty_fields_left(board, user1, user2, i)
+
+
+def empty_fields_left(board, user1, user2, i):
+    if (board[0] == ['X'] and board[3] == ['X'] and board[6] == ['X']) or \
+            (board[1] == ['X'] and board[4] == ['X'] and board[7] == ['X']) or \
+            (board[2] == ['X'] and board[5] == ['X'] and board[8] == ['X']) or \
+            (board[0] == ['X'] and board[4] == ['X'] and board[8] == ['X']) or \
+            (board[2] == ['X'] and board[4] == ['X'] and board[6] == ['X']) or \
+            (board[0] == ['X'] and board[1] == ['X'] and board[2] == ['X']) or \
+            (board[3] == ['X'] and board[4] == ['X'] and board[5] == ['X']) or \
+            (board[6] == ['X'] and board[7] == ['X'] and board[8] == ['X']):
+        print('First player WINS!')
+    elif (board[0] == ['O'] and board[3] == ['O'] and board[6] == ['O']) or \
+            (board[1] == ['O'] and board[4] == ['O'] and board[7] == ['O']) or \
+            (board[2] == ['O'] and board[5] == ['O'] and board[8] == ['O']) or \
+            (board[0] == ['O'] and board[4] == ['O'] and board[8] == ['O']) or \
+            (board[2] == ['O'] and board[4] == ['O'] and board[6] == ['O']) or \
+            (board[0] == ['O'] and board[1] == ['O'] and board[2] == ['O']) or \
+            (board[3] == ['O'] and board[4] == ['O'] and board[5] == ['O']) or \
+            (board[6] == ['O'] and board[7] == ['O'] and board[8] == ['O']):
+        print('Second player WINS!')
+    elif any(item == [' '] for item in board):
+        print('Next player move\n')
+        user_input_function(user1, user2, i)
+    else:
+        print('Out of fields!\nParity!')
+
+
+board = [[' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' ']]
+choose_user()
+
+# ['X'] [' '] [' ']     # [' '] ['X'] [' ']     # [' '] [' '] ['X']
+# ['X'] [' '] [' ']     # [' '] ['X'] [' ']     # [' '] [' '] ['X']
+# ['X'] [' '] [' ']     # [' '] ['X'] [' ']     # [' '] [' '] ['X']
+
+# ['X'] [' '] [' ']     # [' '] [' '] ['X']
+# [' '] ['X'] [' ']     # [' '] ['X'] [' ']
+# [' '] [' '] ['X']     # ['X'] [' '] [' ']
+
+# ['X'] ['X'] ['X']     # [' '] [' '] [' ']     # [' '] [' '] [' ']
+# [' '] [' '] [' ']     # ['X'] ['X'] ['X']     # [' '] [' '] [' ']
+# [' '] [' '] [' ']     # [' '] [' '] [' ']     # ['X'] ['X'] ['X']
