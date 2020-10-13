@@ -65,23 +65,23 @@ def initial_board(board, user1, user2, i):
 
 
 def empty_fields_left(board, user1, user2, i):
-    if (board[0] == ['X'] and board[3] == ['X'] and board[6] == ['X']) or \
-            (board[1] == ['X'] and board[4] == ['X'] and board[7] == ['X']) or \
-            (board[2] == ['X'] and board[5] == ['X'] and board[8] == ['X']) or \
-            (board[0] == ['X'] and board[4] == ['X'] and board[8] == ['X']) or \
-            (board[2] == ['X'] and board[4] == ['X'] and board[6] == ['X']) or \
-            (board[0] == ['X'] and board[1] == ['X'] and board[2] == ['X']) or \
-            (board[3] == ['X'] and board[4] == ['X'] and board[5] == ['X']) or \
-            (board[6] == ['X'] and board[7] == ['X'] and board[8] == ['X']):
+    if (board[0] == user1 and board[3] == user1 and board[6] == user1) or \
+            (board[1] == user1 and board[4] == user1 and board[7] == user1) or \
+            (board[2] == user1 and board[5] == user1 and board[8] == user1) or \
+            (board[0] == user1 and board[4] == user1 and board[8] == user1) or \
+            (board[2] == user1 and board[4] == user1 and board[6] == user1) or \
+            (board[0] == user1 and board[1] == user1 and board[2] == user1) or \
+            (board[3] == user1 and board[4] == user1 and board[5] == user1) or \
+            (board[6] == user1 and board[7] == user1 and board[8] == user1):
         print('First player WINS!')
-    elif (board[0] == ['O'] and board[3] == ['O'] and board[6] == ['O']) or \
-            (board[1] == ['O'] and board[4] == ['O'] and board[7] == ['O']) or \
-            (board[2] == ['O'] and board[5] == ['O'] and board[8] == ['O']) or \
-            (board[0] == ['O'] and board[4] == ['O'] and board[8] == ['O']) or \
-            (board[2] == ['O'] and board[4] == ['O'] and board[6] == ['O']) or \
-            (board[0] == ['O'] and board[1] == ['O'] and board[2] == ['O']) or \
-            (board[3] == ['O'] and board[4] == ['O'] and board[5] == ['O']) or \
-            (board[6] == ['O'] and board[7] == ['O'] and board[8] == ['O']):
+    elif (board[0] == user2 and board[3] == user2 and board[6] == user2) or \
+            (board[1] == user2 and board[4] == user2 and board[7] == user2) or \
+            (board[2] == user2 and board[5] == user2 and board[8] == user2) or \
+            (board[0] == user2 and board[4] == user2 and board[8] == user2) or \
+            (board[2] == user2 and board[4] == user2 and board[6] == user2) or \
+            (board[0] == user2 and board[1] == user2 and board[2] == user2) or \
+            (board[3] == user2 and board[4] == user2 and board[5] == user2) or \
+            (board[6] == user2 and board[7] == user2 and board[8] == user2):
         print('Second player WINS!')
     elif any(item == [' '] for item in board):
         print('Next player move\n')
